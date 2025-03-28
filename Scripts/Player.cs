@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 public partial class Player : CharacterBody2D
 {
-	public int Speed = 200;
+	public int Speed = 100;
 	private AnimatedSprite2D animatedSprite2D;
     Node areaParent;
 
@@ -25,7 +25,7 @@ public partial class Player : CharacterBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-        
+
     }
 
     public override void _PhysicsProcess(double delta)
@@ -38,7 +38,7 @@ public partial class Player : CharacterBody2D
     {
         areaParent = area.GetParent();
 
-        if (areaParent.IsInGroup("NPCs"))
+        if (areaParent.IsInGroup("NPCs") && areaParent.GetNode<Label>("NameLabel") != null)
         {
             var nameLabel = areaParent.GetNode<Label>("NameLabel");
             nameLabel.Visible = true;

@@ -7,5 +7,8 @@
 
 [node name="Player" parent="." instance=ExtResource("1_qxrlw")]
 
-[node name="Cow" parent="." instance=ExtResource("2_wrm1d")]
+[node name="ScaredyCow" parent="." instance=ExtResource("2_wrm1d")]
 position = Vector2(-213, -14)
+
+[node name="NiceCow" parent="." instance=ExtResource("2_wrm1d")]
+script = null

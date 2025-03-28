@@ -1,0 +1,80 @@
+[gd_scene load_steps=10 format=3 uid="uid://cxjmyjbxnhpcx"]
+
+[ext_resource type="Script" uid="uid://bxt38eboj42yo" path="res://Scripts/ScaredCow.cs" id="1_asfwn"]
+[ext_resource type="Texture2D" uid="uid://drw2svaswphgt" path="res://Assets/Cute_Fantasy_Free/Animals/Cow/Cow.png" id="2_u4wuh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dryh"]
+size = Vector2(23, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81klo"]
+atlas = ExtResource("2_u4wuh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asfwn"]
+atlas = ExtResource("2_u4wuh")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4wuh"]
+atlas = ExtResource("2_u4wuh")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tgy6u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81klo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asfwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4wuh")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[sub_resource type="SystemFont" id="SystemFont_asfwn"]
+subpixel_positioning = 0
+msdf_pixel_range = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wowpa"]
+size = Vector2(50, 29)
+
+[node name="Cow" type="CharacterBody2D" groups=["NPCs"]]
+motion_mode = 1
+script = ExtResource("1_asfwn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 8)
+shape = SubResource("RectangleShape2D_3dryh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tgy6u")
+animation = &"run"
+autoplay = "idle"
+
+[node name="NameLabel" type="Label" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = -22.0
+offset_right = 21.0
+offset_bottom = -11.0
+theme_override_fonts/font = SubResource("SystemFont_asfwn")
+theme_override_font_sizes/font_size = 7
+text = "Talking Cow"
+
+[node name="InteractionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(1, 7.5)
+shape = SubResource("RectangleShape2D_wowpa")
+
+[connection signal="area_entered" from="InteractionArea" to="." method="OnInteractionAreaEntered"]
+[connection signal="area_exited" from="InteractionArea" to="." method="OnInteractionAreaExited"]
