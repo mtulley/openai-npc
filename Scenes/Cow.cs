@@ -12,6 +12,7 @@ public partial class Cow : CharacterBody2D
 		name = GetNode<Label>("NameLabel");
 		animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		animatedSprite2D.Play("idle");
+		name.Visible = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,5 +20,4 @@ public partial class Cow : CharacterBody2D
 	{
 
 	}
-
 }

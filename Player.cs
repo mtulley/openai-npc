@@ -5,20 +5,18 @@ using System.Xml.Serialization;
 public partial class Player : CharacterBody2D
 {
 	public int Speed = 200;
-
 	private AnimatedSprite2D animatedSprite2D;
-
     Node areaParent;
 
     public void GetInput() 
     {
-        var inputDirection = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+        var inputDirection = Input.GetVector("move_left", "move_right", "move_up", "move_down") + Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 	    this.Velocity = inputDirection.Normalized() * Speed;
     }
 
-	public override void _Ready()
+    public override void _Ready()
 	{
-        // NOTE: Motion Mode is set to MOTION_MODE_FLOATING in the inspector
+        // NOTE: CharacterBody2D.MotionMode is set to MOTION_MODE_FLOATING in the inspector
 
 		animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         animatedSprite2D.Play("idle_down");
