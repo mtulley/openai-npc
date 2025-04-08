@@ -1,7 +1,20 @@
-[gd_scene load_steps=30 format=3 uid="uid://bv4m5jb7hyrpa"]
+[gd_scene load_steps=32 format=3 uid="uid://bv4m5jb7hyrpa"]
 
 [ext_resource type="Script" uid="uid://dpaefnp7gil67" path="res://Scripts/Player.cs" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://d1bkwr4k1pbjy" path="res://Assets/Cute_Fantasy_Free/Player/Player.png" id="2_6t5aa"]
+
+[sub_resource type="Animation" id="Animation_cvnsp"]
+resource_name = "move_up"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6t5aa"]
+_data = {
+&"move_up": SubResource("Animation_cvnsp")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6g32"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxrlw"]
+size = Vector2(14, 6)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wrm1d"]
 atlas = ExtResource("2_6t5aa")
@@ -194,21 +207,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6g32"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxrlw"]
-size = Vector2(14, 6)
-
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_cvnsp")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_ldgsr")
-animation = &"move_up"
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6t5aa")
+}
 
 [node name="InteractionArea" type="Area2D" parent="."]
 
@@ -219,6 +225,13 @@ shape = SubResource("RectangleShape2D_i6g32")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 6.5)
 shape = SubResource("RectangleShape2D_qxrlw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ldgsr")
+animation = &"move_up"
 
 [connection signal="area_entered" from="InteractionArea" to="." method="OnInteractionAreaEntered"]
 [connection signal="area_exited" from="InteractionArea" to="." method="OnInteractionAreaExited"]

@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 public partial class Player : CharacterBody2D
 {
-	public int Speed = 100;
+	public int Speed = 50;
 	private AnimatedSprite2D animatedSprite2D;
     Node areaParent;
 
