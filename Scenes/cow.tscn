@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxjmyjbxnhpcx"]
+[gd_scene load_steps=12 format=3 uid="uid://cxjmyjbxnhpcx"]
 
-[ext_resource type="Script" uid="uid://bxt38eboj42yo" path="res://Scripts/ScaredCow.cs" id="1_asfwn"]
-[ext_resource type="Texture2D" uid="uid://drw2svaswphgt" path="res://Assets/Cute_Fantasy_Free/Animals/Cow/Cow.png" id="2_u4wuh"]
+[ext_resource type="Script" uid="uid://bxt38eboj42yo" path="res://scripts/ScaredCow.cs" id="1_asfwn"]
+[ext_resource type="Texture2D" uid="uid://drw2svaswphgt" path="res://assets/cute-fantasy-free/animals/Cow/Cow.png" id="2_u4wuh"]
+[ext_resource type="PackedScene" uid="uid://bj76g6chvbbhf" path="res://scenes/actionable.tscn" id="3_gly4w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dryh"]
 size = Vector2(23, 4)
@@ -47,6 +48,9 @@ msdf_pixel_range = 1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wowpa"]
 size = Vector2(50, 29)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_y2el1"]
+radius = 14.0
+
 [node name="Cow" type="CharacterBody2D" groups=["NPCs"]]
 motion_mode = 1
 script = ExtResource("1_asfwn")
@@ -75,6 +79,12 @@ text = "Moo"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2(1, 7.5)
 shape = SubResource("RectangleShape2D_wowpa")
+
+[node name="Actionable" parent="." instance=ExtResource("3_gly4w")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actionable"]
+position = Vector2(1, 6)
+shape = SubResource("CircleShape2D_y2el1")
 
 [connection signal="area_entered" from="InteractionArea" to="." method="OnInteractionAreaEntered"]
 [connection signal="area_exited" from="InteractionArea" to="." method="OnInteractionAreaExited"]

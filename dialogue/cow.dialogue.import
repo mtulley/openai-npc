@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://cu75pg3ljtujg"
+path="res://.godot/imported/cow.dialogue-6abf2c059c5cd5e3ed08d0dfe0046bd8.tres"
+
+[deps]
+
+source_file="res://dialogue/cow.dialogue"
+dest_files=["res://.godot/imported/cow.dialogue-6abf2c059c5cd5e3ed08d0dfe0046bd8.tres"]
+
+[params]
+
+defaults=true

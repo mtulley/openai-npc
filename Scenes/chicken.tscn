@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://biginoe3hp3po"]
 
-[ext_resource type="Script" uid="uid://bxt38eboj42yo" path="res://Scripts/ScaredCow.cs" id="1_jy3mo"]
-[ext_resource type="Texture2D" uid="uid://c5tunkeydpgcp" path="res://Assets/Cute_Fantasy_Free/Animals/Chicken/Chicken.png" id="2_jy3mo"]
+[ext_resource type="Script" uid="uid://bxt38eboj42yo" path="res://scripts/ScaredCow.cs" id="1_jy3mo"]
+[ext_resource type="Texture2D" uid="uid://c5tunkeydpgcp" path="res://assets/cute-fantasy-free/animals/Chicken/Chicken.png" id="2_jy3mo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dryh"]
 size = Vector2(23, 4)
