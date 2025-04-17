@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://b8eec3eywpbqd"]
+[gd_scene load_steps=25 format=4 uid="uid://b8eec3eywpbqd"]
 
 [ext_resource type="PackedScene" uid="uid://bv4m5jb7hyrpa" path="res://scenes/player.tscn" id="1_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://cxjmyjbxnhpcx" path="res://scenes/cow.tscn" id="2_wrm1d"]
@@ -10,6 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://cci0l0qreob4r" path="res://assets/cute-fantasy-free/tiles/Path_Tile.png" id="8_nb51f"]
 [ext_resource type="Texture2D" uid="uid://kkfojy0n1ol0" path="res://assets/cute-fantasy-free/tiles/Water_Middle.png" id="9_nnt18"]
 [ext_resource type="Texture2D" uid="uid://dgfeq6mdrrrkw" path="res://assets/cute-fantasy-free/tiles/Water_Tile.png" id="10_ewbju"]
+[ext_resource type="Texture2D" uid="uid://dey5bk5l0jfrk" path="res://assets/my-pixil-art/tavern-original.png" id="11_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://bcsitcvbbqtof" path="res://assets/my-pixil-art/goblin-v01.png" id="12_dinhu"]
+[ext_resource type="Script" uid="uid://do8mgb0dd16j1" path="res://scripts/NpcDialogueGenerator.cs" id="13_trtic"]
+[ext_resource type="Script" uid="uid://ny1ea204v4t8" path="res://scripts/LLMDialogueManager.cs" id="14_trtic"]
+[ext_resource type="PackedScene" uid="uid://cw2piqu0pq3wb" path="res://scenes/textbox.tscn" id="15_ir15t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_85qyi"]
 texture = ExtResource("3_ldgsr")
@@ -131,11 +136,34 @@ visibility_layer = 2
 zoom = Vector2(5, 5)
 
 [node name="ScaredyCow" parent="." instance=ExtResource("2_wrm1d")]
-position = Vector2(158, -31)
+position = Vector2(2, 100)
+script = null
 
 [node name="NiceCow" parent="." instance=ExtResource("2_wrm1d")]
-position = Vector2(59, -57)
+position = Vector2(-68, 78)
 script = null
+
+[node name="Tavern" type="Node2D" parent="."]
+position = Vector2(96, -61)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tavern"]
+texture = ExtResource("11_kvpfn")
+
+[node name="Goblin" type="Node2D" parent="."]
+position = Vector2(38, -24)
+
+[node name="Sprite2D" type="Sprite2D" parent="Goblin"]
+texture = ExtResource("12_dinhu")
+
+[node name="NPCDialogueGenerator" type="Node" parent="."]
+script = ExtResource("13_trtic")
+
+[node name="LLMDialogueManager" type="Node" parent="." node_paths=PackedStringArray("npcDialogueGenerator")]
+script = ExtResource("14_trtic")
+npcDialogueGenerator = NodePath("../NPCDialogueGenerator")
+
+[node name="Textbox" parent="." instance=ExtResource("15_ir15t")]
+visible = false
 
 [editable path="Player"]
 [editable path="ScaredyCow"]

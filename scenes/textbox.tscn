@@ -1,0 +1,105 @@
+[gd_scene load_steps=5 format=3 uid="uid://cw2piqu0pq3wb"]
+
+[ext_resource type="Script" uid="uid://dom2er7tq0yhc" path="res://scripts/Textbox.cs" id="1_nyk3b"]
+[ext_resource type="LabelSettings" uid="uid://bxbgurnqlbxux" path="res://scenes/textbox.tres" id="2_3xmdk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nsew3"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xmdk"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 8
+border_width_top = 4
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+
+[node name="Textbox" type="CanvasLayer"]
+script = ExtResource("1_nyk3b")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -396.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="NpcDialogueContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/NpcDialogueContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nsew3")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/NpcDialogueContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/NpcDialogueContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/NpcDialogueContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/NpcDialogueContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Place holder text! Lorem Ipsum I want to die lmoa i nehsjsjasjdslk djfhalkjsdhflak jsdhflkja hsdlfkjha lskdj hflakjs dhfla kjshdflkajs hdlfkjahsldkfj"
+label_settings = ExtResource("2_3xmdk")
+autowrap_mode = 3
+
+[node name="PlayerDialogueContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/PlayerDialogueContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3xmdk")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PlayerDialogueContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/PlayerDialogueContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PlayerDialogueContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PlayerDialogueContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Player: enter responses here."
+label_settings = ExtResource("2_3xmdk")
+autowrap_mode = 3

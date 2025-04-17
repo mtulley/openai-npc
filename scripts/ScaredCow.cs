@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Cow : CharacterBody2D
+public partial class ScaredCow : CharacterBody2D
 {
 	AnimatedSprite2D animatedSprite2D;
 	public Label name;

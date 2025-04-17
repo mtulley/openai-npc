@@ -9,6 +9,8 @@ public partial class Player : CharacterBody2D
     Node areaParent;
     Area2D ActionableFinder;
 
+    CanvasLayer TextBox;
+
     public void GetInput() 
     {
         var inputDirection = Input.GetVector("move_left", "move_right", "move_up", "move_down") + Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
@@ -22,7 +24,8 @@ public partial class Player : CharacterBody2D
         {
             var actionables = ActionableFinder.GetOverlappingAreas();
             Actionable actionable = (Actionable)actionables[0];
-            actionable.Action();
+            // actionable.Action();
+            TextBox.Show();
         }
     }
 
@@ -32,6 +35,7 @@ public partial class Player : CharacterBody2D
 
 		animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         animatedSprite2D.Play("idle_down");
+        TextBox = GetParent().GetNode<CanvasLayer>("Textbox");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
